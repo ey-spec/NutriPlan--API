@@ -1,6 +1,6 @@
 /**
  * NutriPlan - Main Entry Point
-*/
+ */
 "use strict";
 
 import {
@@ -10,16 +10,14 @@ import {
   ProductsService,
 } from "./api/mealdb.js";
 import { FoodLogStore } from "./state/appState.js";
+import { ProductsView } from "./ui/productView.js";
+import { MealsView } from "./ui/mealView.js";
+import { NavController, MobileMenuController } from "./ui/navLinks.js";
 import {
-  NavController,
-  MobileMenuController,
   FoodLogQuickActions,
   LogMealModal,
-  MealsView,
   FoodLogView,
-  ProductsView,
-} from "./ui/components.js";
-
+} from "./ui/foodLog.js";
 
 const API_KEY = "NNbxvbRBOgZO01gmUdCFVMhUuQ8EcX9fbQLy5boP";
 const MEALS_URL = "https://nutriplan-api.vercel.app/api/";
