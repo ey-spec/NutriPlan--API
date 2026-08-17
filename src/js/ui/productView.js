@@ -1,5 +1,3 @@
-
-
 // ===================== Product View ================================
 
 export class ProductsView {
@@ -109,14 +107,13 @@ export class ProductsView {
     try {
       const response = await this.productsService.searchProducts("", 1, 24);
       this.currentProducts = response.results;
-      this.currentTotal = response.pagination.total;
-      this.currentLabel = "products";
+      this.currentLabel = "All Products";
       this.applyGradeFilter();
     } catch (error) {
       this.showError();
     }
   }
-  
+
   showNotFoundToast(message = "Product not found in database") {
     Swal.fire({
       toast: true,
@@ -133,15 +130,17 @@ export class ProductsView {
 
   async handleSearch() {
     const query = this.searchInput.value.trim();
-    if (!query) return;
+    if (!query) {
+      this.loadInitialProducts();
+      return;
+    }
 
     this.showLoading();
 
     try {
       const response = await this.productsService.searchProducts(query, 1, 24);
       this.currentProducts = response.results;
-      this.currentTotal = response.pagination.total;
-      this.currentLabel = `results for "${query}"`;
+      this.currentLabel = `"${query}"`;
       this.applyGradeFilter();
 
       if (response.results.length === 0) {
@@ -152,10 +151,12 @@ export class ProductsView {
     }
   }
 
-
   async handleBarcodeLookup() {
     const barcode = this.barcodeInput.value.trim();
-    if (!barcode) return;
+    if (!barcode) {
+      this.loadInitialProducts();
+      return;
+    }
 
     this.showLoading();
 
@@ -163,7 +164,7 @@ export class ProductsView {
       const response = await this.productsService.getProductByBarcode(barcode);
       this.currentProducts = [response.result];
       this.currentTotal = 1;
-      this.currentLabel = "result";
+      this.currentLabel = "this barcode";
       this.applyGradeFilter();
     } catch (error) {
       this.showError("Product not found for this barcode.");
@@ -181,8 +182,7 @@ export class ProductsView {
         24,
       );
       this.currentProducts = response.results;
-      this.currentTotal = response.pagination.total;
-      this.currentLabel = "products";
+      this.currentLabel = ` "${categoryId}"`;
       this.applyGradeFilter();
     } catch (error) {
       this.showError();
@@ -211,7 +211,6 @@ export class ProductsView {
 
     this.renderGrid(
       filtered,
-      this.currentTotal ?? filtered.length,
       this.currentLabel ?? "",
     );
   }
@@ -230,8 +229,8 @@ export class ProductsView {
     </p>`;
   }
 
-  renderGrid(products, total, label) {
-    this.productsCount.textContent = `Showing ${products.length} of ${total} ${label}`;
+  renderGrid(products, label) {
+    this.productsCount.textContent = `Showing ${products.length} Product of ${label}`;
 
     if (products.length === 0) {
       this.productsGrid.innerHTML = `
