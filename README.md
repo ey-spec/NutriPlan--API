@@ -23,11 +23,10 @@ Nutri-Plan/
         ├── state/
         │   └── appState.js         # FoodLogStore — localStorage-backed state
         └── ui/
-            ├── navLinks.js          # NavController, MobileMenuController, FoodLogQuickActions
-            ├── routerService.js     # RouterService — hash-based navigation
-            ├── mealView.js          # MealsView, LogMealModal
+            ├── navLinks.js          # NavController, MobileMenuController
+            ├── mealView.js          # MealsView
             ├── productView.js       # ProductsView
-            └── foodLog.js           # FoodLogView
+            └── foodLog.js           # FoodLogView,FoodLogQuickActions ,LogMealModal
 ```
 
 ## 🔗 API Reference
