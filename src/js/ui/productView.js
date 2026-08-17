@@ -166,6 +166,7 @@ export class ProductsView {
       this.currentTotal = 1;
       this.currentLabel = "this barcode";
       this.applyGradeFilter();
+      this.openProductModal(response.result.barcode);
     } catch (error) {
       this.currentProducts = [];
       this.currentTotal = 0;
