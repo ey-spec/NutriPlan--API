@@ -224,7 +224,7 @@ export class ProductsView {
   }
 
   showError(message = "Something went wrong. Please try again.") {
-    this.productsGrid.innerHTML = `
+    document.getElementById("products-section").innerHTML = `
     <p class="col-span-full text-center text-red-500 py-8">
       <i class="fa-solid fa-circle-exclamation mr-1"></i>${message}
     </p>`;

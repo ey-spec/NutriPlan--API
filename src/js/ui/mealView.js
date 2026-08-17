@@ -372,15 +372,15 @@ export class MealsView {
 
   toggleCategoriesView() {
     this.categoriesExpanded = !this.categoriesExpanded;
+    this.viewAllIcon = document.getElementById("view-all-categories-icon");
 
     if (this.categoriesExpanded) {
       this.viewAllText.textContent = "View Less";
-      this.viewAllIcon.classList.remove("fa-chevron-right");
-      this.viewAllIcon.classList.add("fa-chevron-up");
+      this.viewAllIcon.outerHTML = `<i id="view-all-categories-icon" class="fa-solid fa-chevron-down text-xs"></i>`;
     } else {
       this.viewAllText.textContent = "View All";
       this.viewAllIcon.classList.remove("fa-chevron-up");
-      this.viewAllIcon.classList.add("fa-chevron-right");
+      this.viewAllIcon.outerHTML = `<i id="view-all-categories-icon" class="fa-solid fa-chevron-right text-xs"></i>`;
     }
 
     this.renderCategoryCards();
