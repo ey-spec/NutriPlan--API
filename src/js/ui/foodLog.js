@@ -395,25 +395,29 @@ export class FoodLogView {
        </div>`;
 
     return `
-  <div class="flex items-center gap-4 bg-gray-50 rounded-xl p-4">
-    ${imageHtml}
-    <div class="flex-1">
-      <p class="font-bold text-gray-900">${meal.name}</p>
-      <p class="text-sm text-gray-500">${subtitleLine}</p>
-      <p class="text-xs text-gray-400">${time}</p>
+  <div class="flex items-center justify-between bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-all">
+    <div class="flex items-center gap-4">
+      ${imageHtml}
+      <div>
+        <p class="font-bold text-gray-900">${meal.name}</p>
+        <p class="text-sm text-gray-500">${subtitleLine}</p>
+        <p class="text-xs text-gray-400">${time}</p>
+      </div>
     </div>
-    <div class="text-right">
-      <p class="text-xl font-bold text-emerald-600">${meal.nutrition.calories}</p>
-      <p class="text-xs text-gray-500">kcal</p>
+    <div class = "flex items-center gap-4">
+      <div class="text-right">
+        <p class="text-xl font-bold text-emerald-600">${meal.nutrition.calories}</p>
+        <p class="text-xs text-gray-500">kcal</p>
+      </div>
+      <div class="hidden md:flex gap-2 text-xs text-gray-500">
+        <span class="px-2 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full">${meal.nutrition.protein}g P</span>
+        <span class="px-2 py-1 bg-amber-50 text-amber-600 text-xs font-semibold rounded-full">${meal.nutrition.carbs}g C</span>
+        <span class="px-2 py-1 bg-purple-50 text-purple-600 text-xs font-semibold rounded-full">${meal.nutrition.fat}g F</span>
+      </div>
+      <button class="delete-item-btn text-gray-400 hover:text-red-500 transition-colors" data-index="${index}">
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </div>
-    <div class="flex gap-2">
-      <span class="px-2 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full">${meal.nutrition.protein}g P</span>
-      <span class="px-2 py-1 bg-amber-50 text-amber-600 text-xs font-semibold rounded-full">${meal.nutrition.carbs}g C</span>
-      <span class="px-2 py-1 bg-purple-50 text-purple-600 text-xs font-semibold rounded-full">${meal.nutrition.fat}g F</span>
-    </div>
-    <button class="delete-item-btn text-gray-400 hover:text-red-500 transition-colors" data-index="${index}">
-      <i class="fa-solid fa-trash"></i>
-    </button>
   </div>`;
   }
 
