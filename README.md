@@ -8,24 +8,27 @@ NutriPlan lets users browse recipes, calculate nutrition facts, scan packaged fo
 
 ## 📁 Project Structure
 
+```
 Nutri-Plan/
-├── index.html # Main HTML file
-├── README.md # This file
+├── index.html                  # Main HTML file
+├── README.md                   # This file
 └── src/
-├── css/
-│ └── style.css # Styles
-├── images/
-└── js/
-├── main.js # Entry point — app initialization & wiring
-├── api/
-│ └── mealdb.js # API service classes (Meals, Nutrition, Products)
-├── state/
-│ └── appState.js # FoodLogStore — localStorage-backed state
-└── ui/
-├── navLinks.js # NavController, MobileMenuController, FoodLogQuickActions
-├── mealView.js # MealsView, LogMealModal
-├── productView.js # ProductsView
-└── foodLog.js # FoodLogView
+    ├── css/
+    │   └── style.css            # Styles
+    ├── images/
+    └── js/
+        ├── main.js                # Entry point — app initialization & wiring
+        ├── api/
+        │   └── mealdb.js           # API service classes (Meals, Nutrition, Products)
+        ├── state/
+        │   └── appState.js         # FoodLogStore — localStorage-backed state
+        └── ui/
+            ├── navLinks.js          # NavController, MobileMenuController, FoodLogQuickActions
+            ├── routerService.js     # RouterService — hash-based navigation
+            ├── mealView.js          # MealsView, LogMealModal
+            ├── productView.js       # ProductsView
+            └── foodLog.js           # FoodLogView
+```
 
 ## 🔗 API Reference
 
