@@ -167,7 +167,11 @@ export class ProductsView {
       this.currentLabel = "this barcode";
       this.applyGradeFilter();
     } catch (error) {
-      this.showError("Product not found for this barcode.");
+      this.currentProducts = [];
+      this.currentTotal = 0;
+      this.currentLabel = `"${barcode}"`;
+
+      this.renderGrid([], this.currentLabel);
       this.showNotFoundToast();
     }
   }
@@ -209,10 +213,7 @@ export class ProductsView {
         )
       : this.currentProducts;
 
-    this.renderGrid(
-      filtered,
-      this.currentLabel ?? "",
-    );
+    this.renderGrid(filtered, this.currentLabel ?? "");
   }
 
   showLoading() {
