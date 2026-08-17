@@ -203,11 +203,14 @@ export class MealsView {
     });
   }
 
-  showError(container, message = "Something went wrong. Please try again.") {
-    container.innerHTML = `
+  showError(message = "Something went wrong. Please try again.") {
+    document.getElementById("all-recipes-section").innerHTML = `
     <p class="text-sm text-red-500 text-center py-4 col-span-full">
       <i class="fa-solid fa-circle-exclamation mr-1"></i>${message}
     </p>`;
+
+    document.getElementById("search-filters-section").classList.add("hidden");
+    document.getElementById("meal-categories-section").classList.add("hidden");
   }
 
   buildIngredientStrings(ingredients) {
@@ -362,7 +365,7 @@ export class MealsView {
       this.renderCategoryCards();
       this.renderCuisinePills(areasRes.results);
     } catch (error) {
-      this.showError(this.categoriesGrid, "Failed to load categories.");
+      this.showError();
       this.cuisinePillsContainer.innerHTML = `
       <p class="text-sm text-red-500">
         <i class="fa-solid fa-circle-exclamation mr-1"></i>Failed to load cuisines.
@@ -520,7 +523,7 @@ export class MealsView {
       this.currentMeals = response.results;
       this.renderGrid(this.currentMeals, response.pagination.total);
     } catch (error) {
-      this.showError(this.recipesGrid, "Failed to load recipes.");
+      this.showError();
       this.recipesCount.textContent = "";
     }
   }
@@ -534,7 +537,7 @@ export class MealsView {
       this.currentMeals = response.results;
       this.renderGrid(this.currentMeals, this.currentMeals.length);
     } catch (error) {
-      this.showError(this.recipesGrid, "Failed to load recipes.");
+      this.showError();
     }
   }
 
