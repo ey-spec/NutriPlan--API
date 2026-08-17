@@ -486,7 +486,12 @@ export class MealsView {
   setupSearch() {
     this.searchInput.addEventListener("input", () => {
       const query = this.searchInput.value.trim();
-      this.applyFilter({ query });
+
+      clearTimeout(this.searchTimeout);
+
+      this.searchTimeout = setTimeout(() => {
+        this.applyFilter({ query });
+      }, 500);
     });
   }
 
