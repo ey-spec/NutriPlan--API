@@ -378,8 +378,8 @@ export class MealsView {
     this.viewAllIcon = document.getElementById("view-all-categories-icon");
 
     if (this.categoriesExpanded) {
-      this.viewAllText.textContent = "View Less";
-      this.viewAllIcon.outerHTML = `<i id="view-all-categories-icon" class="fa-solid fa-chevron-down text-xs"></i>`;
+      this.viewAllText.textContent = "Show Less";
+      this.viewAllIcon.outerHTML = `<i id="view-all-categories-icon" class="fa-solid fa-chevron-up text-xs"></i>`;
     } else {
       this.viewAllText.textContent = "View All";
       this.viewAllIcon.classList.remove("fa-chevron-up");
